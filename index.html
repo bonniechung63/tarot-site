@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>緣來是你 ｜ 女祭司塔羅與命理靈性諮詢</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0814;
+            --bg-card: rgba(23, 18, 41, 0.85);
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --purple-accent: #7b4397;
+            --purple-glow: rgba(123, 67, 151, 0.35);
+            --text-main: #e2e8f0;
+            --text-muted: #a0aec0;
+            --border-gold: rgba(212, 175, 55, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(circle at 50% 10%, rgba(123, 67, 151, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: 'Noto Serif TC', serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 45px 0 20px;
+        }
+
+        .brand-logo {
+            font-size: 2.4rem;
+            letter-spacing: 4px;
+            color: var(--gold-primary);
+            text-shadow: 0 0 18px rgba(212, 175, 55, 0.45);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .brand-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .divider {
+            width: 90px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            margin: 22px auto;
+        }
+
+        /* Hero Notice */
+        .hero-notice {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 22px 25px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-notice h2 {
+            color: var(--gold-light);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-notice p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.35rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-gold), transparent);
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 20px var(--purple-glow);
+            transform: translateY(-2px);
+        }
+
+        .service-card.selected {
+            border: 2px solid var(--gold-primary);
+            background: rgba(35, 25, 60, 0.9);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .service-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .service-title {
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .service-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .service-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* Form Controls */
+        .booking-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: #e53e3e;
+            margin-left: 3px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(10, 8, 20, 0.85);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Payment Section */
+        .payment-box {
+            background: rgba(123, 67, 151, 0.12);
+            border: 1px dashed var(--gold-primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .payment-box h4 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .payment-details {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 2;
+            margin-bottom: 10px;
+        }
+
+        .payment-details strong {
+            color: var(--gold-primary);
+        }
+
+        .payme-link-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 18px;
+            background: #e0001b;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(224, 0, 27, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .payme-link-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37 0%, #a67c1e 100%);
+            border: none;
+            border-radius: 8px;
+            color: #0a0814;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-1px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="brand-logo">緣來是你</div>
+        <div class="brand-subtitle">女祭司 ｜ 塔羅與命理靈性諮詢</div>
+        <div class="divider"></div>
+    </header>
+
+    <div class="hero-notice">
+        <h2>🔮 歡迎來到女祭司的靈性領域</h2>
+        <p>萬物皆有定數，相遇即是緣分。請選擇您需要的諮詢服務並填寫預約資料。完成預約與付款後，女祭司將會在 12 小時內親自透過 Email 發送確認信與線上諮詢連結給您。</p>
+    </div>
+
+    <!-- Formspree 自動寄信服務 -->
+    <form action="https://formspree.io/f/xqppaqvp" method="POST" class="booking-form" id="tarotBookingForm">
+        
+        <div class="section-title">01. 選擇諮詢服務</div>
+        
+        <!-- 隱藏欄位：儲存選擇的服務 -->
+        <input type="hidden" name="已選擇服務" id="selectedServiceInput" value="未選擇" required>
+        
+        <div class="services-grid">
+            <!-- 服務 1 -->
+            <div class="service-card" onclick="selectService(this, '🌈 七脈輪能量解讀 (Chakra Energy)', 'HK$ 680 / 45 mins')">
+                <div class="service-icon">🌈</div>
+                <div class="service-title">七脈輪能量解讀</div>
+                <div class="service-desc">檢測身心靈七大能量中心狀態，梳理阻塞能量，結合水晶與能量頻率調和指引。</div>
+                <div class="service-price">HK$ 680 / 45 mins</div>
+            </div>
+
+            <!-- 服務 2 -->
+            <div class="service-card" onclick="selectService(this, '☯️ 八字命理塔羅深度推算 (Bazi & Tarot)', 'HK$ 880 / 60 mins')">
+                <div class="service-icon">☯️</div>
+                <div class="service-title">八字命理塔羅</div>
+                <div class="service-desc">東方八字五行命盤 ✕ 西方韋特塔羅交叉剖析，精準破譯格局大運與當前運勢卡點。</div>
+                <div class="service-price">HK$ 880 / 60 mins</div>
+            </div>
+
+            <!-- 服務 3 -->
+            <div class="service-card" onclick="selectService(this, '🍂 四季塔羅流年運勢 (Four Seasons Spread)', 'HK$ 1,280 / 75 mins')">
+                <div class="service-icon">🍂</div>
+                <div class="service-title">四季塔羅流年運勢</div>
+                <div class="service-desc">春夏秋冬四季專屬牌陣（12+1張牌），佈局未來一整年事業、感情與財運轉折關鍵點。</div>
+                <div class="service-price">HK$ 1,280 / 75 mins</div>
+            </div>
+
+            <!-- 服務 4 -->
+            <div class="service-card" onclick="selectService(this, '🔮 1 對 1 深度潛意識解讀', 'HK$ 580 / 30 mins')">
+                <div class="service-icon">🔮</div>
+                <div class="service-title">1對1 深度潛意識解讀</div>
+                <div class="service-desc">直擊當前情感卡點、關係復合抉擇或職涯迷惘，給予溫暖且具體的行動建議。</div>
+                <div class="service-price">HK$ 580 / 30 mins</div>
+            </div>
+        </div>
+
+        <div class="section-title">02. 個人資料與問卷</div>
+
+        <div class="grid-2">
+            <div class="form-group">
+                <label>姓名 / 暱稱 <span class="required">*</span></label>
+                <input type="text" name="客戶姓名" class="form-control" placeholder="請輸入您希望稱呼的名稱" required>
+            </div>
+            <div class="form-group">
+                <label>聯絡 Email <span class="required">*</span></label>
+                <input type="email" name="客戶Email" class="form-control" placeholder="用於接收女祭司預約確認與 Meet 連結" required>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="form-group">
+                <label>聯絡電話 / WhatsApp / LINE <span class="required">*</span></label>
+                <input type="text" name="聯絡電話或社交帳號" class="form-control" placeholder="例: +852 91234567 / LINE ID" required>
+            </div>
+            <div class="form-group">
+                <label>出生生辰 (選填，八字服務必填)</label>
+                <input type="text" name="出生生辰" class="form-control" placeholder="例: 1995/08/15 14:30 (不清楚時辰可填未知)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>主要想諮詢的問題或目前卡點 <span class="required">*</span></label>
+            <textarea name="諮詢問題簡述" class="form-control" placeholder="請簡述您目前遇到的困境或想了解的方向（例如：感情復合、事業轉職擇一、能量狀態等）..." required></textarea>
+        </div>
+
+        <div class="section-title">03. 選擇預約時間</div>
+
+        <div class="grid-2">
+            <div class="form-group">
+                <label>希望預約日期 <span class="required">*</span></label>
+                <input type="date" name="希望預約日期" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>希望預約時段 <span class="required">*</span></label>
+                <select name="希望預約時段" class="form-control" required>
+                    <option value="">-- 請選擇時段 --</option>
+                    <option value="14:00 - 15:00">下午 14:00 - 15:00</option>
+                    <option value="16:00 - 17:00">下午 16:00 - 17:00</option>
+                    <option value="19:30 - 20:30">晚上 19:30 - 20:30</option>
+                    <option value="21:00 - 22:00">晚上 21:00 - 22:00</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section-title">04. 付款方式與確認</div>
+
+        <div class="payment-box">
+            <h4>💳 線上付款資訊</h4>
+            <div class="payment-details">
+                <strong>轉數快 (FPS ID)：</strong> 0746685<br>
+                <strong>PayMe 快速付款：</strong> 
+                <a href="https://payme.hsbc/thehighpriestess8" target="_blank" class="payme-link-btn">👉 點此開啟 PayMe 付款</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>付款憑證 / 交易編號 <span class="required">*</span></label>
+            <input type="text" name="付款憑證或編號" class="form-control" placeholder="請填寫 FPS 交易編號或 PayMe 備註名稱" required>
+        </div>
+
+        <button type="submit" class="submit-btn">送出預約並通知女祭司</button>
+    </form>
+
+    <footer>
+        <p>© 緣來是你 ｜ 女祭司塔羅與命理. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script>
+    function selectService(element, serviceName, price) {
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+        element.classList.add('selected');
+        document.getElementById('selectedServiceInput').value = serviceName + " (" + price + ")";
+    }
+
+    document.getElementById('tarotBookingForm').addEventListener('submit', function(e) {
+        const selectedService = document.getElementById('selectedServiceInput').value;
+        if (selectedService === "未選擇") {
+            e.preventDefault();
+            alert("請先於步驟 01 點擊選擇一種諮詢服務項目！");
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+    });
+</script>
+
+</body>
+</html>
